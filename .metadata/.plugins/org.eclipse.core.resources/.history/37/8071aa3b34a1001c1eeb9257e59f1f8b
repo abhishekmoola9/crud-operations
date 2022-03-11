@@ -1,0 +1,5 @@
+package org.acs.hql.model;
+
+public class Student {
+
+}

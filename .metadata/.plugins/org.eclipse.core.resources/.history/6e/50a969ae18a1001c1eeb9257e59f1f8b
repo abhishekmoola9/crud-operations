@@ -1,0 +1,55 @@
+package com.acs.hibernate;
+
+
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+
+import com.acs.model.Employee;
+
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "project started" );
+        //create a object for configuartion class
+        org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
+       
+        // when we invoked configure() it is looking for hibernate.cfg.xml file
+       cfg.configure("com/acs/hibernate/hibernate.cfg.xml");
+       
+       //get the session factory object
+       SessionFactory factory = cfg.buildSessionFactory();
+       System.out.println(factory);
+       
+       //get the session object
+       Session session = factory.openSession();
+       
+       //get the transaction object
+          Transaction tx = session.beginTransaction();
+          //if u perform insertion/updation/del you need to beginaTransaction
+          
+          //create simple pojo class for respective table
+          Employee emp = new Employee();
+          
+          //set the values for pojo class
+          emp.setId(3);
+          emp.setName("vahini");
+          emp.setSalary(10000);
+          
+          //perform the operation like save(),upadate()
+          session.save(emp);
+          
+          //close the transaction
+          tx.commit();
+          
+          //close the session object
+          session.clear();
+          
+          //close the sessionFactory object
+          factory.close();
+          
+           
+    		   }
+}

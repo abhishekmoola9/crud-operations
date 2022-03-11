@@ -1,0 +1,5 @@
+package org.acs.hql.utility;
+
+public class HibernateUtill {
+
+}

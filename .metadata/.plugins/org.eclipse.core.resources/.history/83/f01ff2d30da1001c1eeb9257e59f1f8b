@@ -1,0 +1,23 @@
+package com.acs.hibernate;
+
+import javax.security.auth.login.Configuration;
+
+import org.hibernate.SessionFactory;
+
+/**
+ * Hello world!
+ *
+ */
+public class App 
+{
+    public static void main( String[] args )
+    {
+        System.out.println( "project started" );
+        org.hibernate.cfg.Configuration cfg = new org.hibernate.cfg.Configuration();
+        System.out.println(cfg);
+        
+       cfg.configure("src/main/java/hibernate.cfg.xml");
+       SessionFactory factory = cfg.buildSessionFactory();
+       System.out.println(factory);
+    }
+}

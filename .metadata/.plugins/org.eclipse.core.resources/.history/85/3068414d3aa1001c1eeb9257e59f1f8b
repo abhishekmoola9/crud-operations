@@ -1,0 +1,23 @@
+package org.acs.hql.dao;
+
+import org.acs.hql.model.Student;
+import org.acs.hql.utility.HibernateUtill;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
+public class StudentDao {
+
+	public void saveStudent(Student student) {
+		Transaction tx = null;
+		try(Session session = HibernateUtill.getSessionFactory().openSession()) {
+			tx = session.beginTransaction();
+			session.save(student);
+			tx.commit();
+		} catch (Exception e) {
+			if (tx != null) {
+				tx.rollback();
+			}
+			
+		}
+	}
+}
